@@ -1,0 +1,5 @@
+.navbar
+  .navbar-gray
+    .input-append.new_task_form
+      %input.input_task#input_task{name:'desc', type:'text', placeholder: "Start typing here to create a task.."}
+      %button.btn-add.butn.add_task= "Add task"

@@ -1,0 +1,6 @@
+#todo_lists
+  %h3.headertext.have_lists Your TODO lists:
+  %h4.headertext.no_lists You do not have any todo lists right now :(
+  %h4.headertext.no_lists Add some below! :)
+%center
+  %a.addproject#new_todo_list{:href => ""}

@@ -1,0 +1,36 @@
+%td.fixed2.centered.visible
+  %input.check#check_completed{type:'checkbox', title:'Set completed/uncompleted'} 
+%td.empty.visible
+%td.fixed1#task_desc.visible
+  %strong{title:'Double click to edit task'}= this.desc
+%td.fixed2.centered.editing_task.hidden
+  %strong= ">>"
+%td.empty.editing_task.hidden
+%td.fixed1.editing_task.hidden
+  .edit_task_form{id: "#{this.id}"}
+    New description:
+    %input.task_edit_input#edit_desc{type:'text', value:'#{this.desc}', title:'Press Enter to change description'}
+%td.centered.fixed3.editing_task.hidden
+  %i.icon-ok#update_task{title:'Update task'}
+  |
+  %i.icon-remove#cancel_edit{title:'Cancel'}
+%td.fixed2.centered.editing_deadline.hidden
+  %strong= ">>"
+%td.empty.editing_deadline.hidden
+%td.fixed1.editing_deadline.hidden
+  .edit_task_form{id: "#{this.id}"}
+    Deadline:
+    %input.task_edit_input#datepicker{type:'text', value:'#{this.deadline}'}
+%td.centered.fixed3.editing_deadline.hidden
+  %i.icon-ok#set_deadline{title:'Set deadline'}
+  |
+  %i.icon-remove#cancel_deadline{title:'Cancel'}
+%td.centered.fixed3.visible#manage
+  #manage_buttons
+    %i.icon-arrow-up#up{title:'Increase priority'}
+    %i.icon-arrow-down#down{title:'Decrease priority'}
+    %i.icon-pencil#edit_task{title:'Edit task'}
+    %i.icon-exclamation-sign#choose_deadline{title:'Choose deadline'}
+    %i.icon-trash#delete_task{href:'', title:'Delete task'}
+
+

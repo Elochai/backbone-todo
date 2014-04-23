@@ -1,0 +1,18 @@
+%center
+  .well.well-small
+    %h2= t(:sign_in)
+    %br
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = devise_error_messages!
+      %div
+        = f.label :email
+        = f.email_field :email, autofocus: true, class:'form-control xlg'
+      %div
+        = f.label :password
+        = f.password_field :password, autocomplete: "off", class:'form-control xlg'
+      - if devise_mapping.rememberable?
+        %div
+          = f.check_box :remember_me
+          = f.label :remember_me
+      = f.submit t(:sign_in), class:'btn btn-success'
+    = render "devise/shared/links"

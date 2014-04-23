@@ -1,0 +1,10 @@
+:javascript
+  $(function() {
+  window.router = new BackboneTodo.Routers.TodoListsRouter({todoLists: #{@todo_lists.to_json({:include => :tasks}).html_safe}});
+  Backbone.history.start();
+  })
+%title= t(:brand)
+.container
+  .span7
+    %h3.headertext= t(:header)
+    #main

@@ -1,0 +1,46 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  header: SINGLE-PAGE TODO APP (RoR + BB)
+  brand: Backbone TODO
+  my_lists: "My TODO lists"
+  access_denied: "Access denied"
+  sign_in_first: 'You need to sign in first'
+  new_list: 'Create TODO list'
+  create_list: 'Start typing here to create a todo list...'
+  lists: 'Your TODO lists:'
+  add_list: Add new list
+  confirm_delete: Are you sure?
+  create_task: Start typing here to create a task...
+  add_task: Add task
+  deadline: "deadline:"
+  priority: Priority
+  no_lists: You do not have any todo lists right now :(
+  no_lists_add: Add some below! :)
+  sign_in: Sign in
+  sign_up: Sign up
+  edit: Edit
+  update: Update
+  confirm_password: (we need your current password to confirm your changes)
+  delete_account: Delete my account
+  confirm: Are you sure?
+  back: Back

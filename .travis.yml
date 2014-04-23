@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 1.9.3
+# uncomment this line if your project needs to run something other than `rake`:
+env:
+  - DB=postgresql
+script: 
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database backbone-todo_test' -U postgres

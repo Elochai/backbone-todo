@@ -1,0 +1,16 @@
+%table.table.table-bordered
+  %thead
+    .navbar
+      .navbar-blue.head
+        %h3.bartext{title:'Double click to edit todo list name'}= this.name
+        #list_manage_buttons
+          %i.icon-pencil.icon-white.editproject{title:'Edit todo list name'}
+          %i.separator= "|"
+          %i.icon-trash.icon-white.delproject{title:'Delete todo list'}
+      .navbar-blue.editing.hidden
+        .input-append
+          .edit_todo_list
+            %input.todo_list_edit_input{type:'text', value:'#{this.name}', title:'Press Enter to change name'}
+    #new_task
+  %tbody#tasks
+

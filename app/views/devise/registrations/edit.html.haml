@@ -1,0 +1,24 @@
+%center
+  .well.well-small
+    %h2
+      =t(:edit) 
+      = "#{current_user.email}"
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+      %div
+        = f.label :email
+        = f.email_field :email, autofocus: true, class:'form-control xlg'
+      %div
+        = f.label :password
+        %i (leave blank if you don't want to change it)
+        = f.password_field :password, autocomplete: "off", class:'form-control xlg'
+      %div
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off", class:'form-control xlg'
+      %div
+        = f.label :current_password
+        %i= t(:confirm_password)
+        = f.password_field :current_password, autocomplete: "off", class:'form-control xlg'
+      = f.submit t(:update), class:'btn btn-success'
+    = button_to t(:delete_account), registration_path(resource_name), data: { confirm: t(:confirm) }, method: :delete, class:'btn btn-danger devise_button'
+    = link_to t(:back), :back, class:'btn devise_button'

@@ -228,8 +228,7 @@ body {
   line-height: 20px;
   color: #000000;
   background-attachment: scroll;
-  background: url(/assets/background2.png) repeat-x #ff9900;
-  background-size: auto 800px;
+  background-color:#FFEBBA;
 }
 
 a {

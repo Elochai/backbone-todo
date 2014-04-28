@@ -19,6 +19,7 @@
 //= require backbone_datalink
 //= require backbone/backbone_todo
 //= require bootstrap-datepicker
+//= require bootstrap-datetimepicker.min
 //= require alertify
 //= require_tree .
 

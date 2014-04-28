@@ -2,18 +2,6 @@ class TodoListsController < ApplicationController
   load_and_authorize_resource
   respond_to :json
 
-  # GET /todo_lists
-  # GET /todo_lists.json
-  def index
-    respond_with current_user.todo_lists
-  end
-
-  # GET /todo_lists/1
-  # GET /todo_lists/1.json
-  def show
-    respond_with @todo_list
-  end
-
   # POST /todo_lists
   # POST /todo_lists.json
   def create

@@ -2,18 +2,6 @@ class TasksController < ApplicationController
   load_and_authorize_resource
   respond_to :json
 
-  # GET /tasks
-  # GET /tasks.json
-  def index
-    respond_with @todo_list.tasks
-  end
-
-  # GET /tasks/1
-  # GET /tasks/1.json
-  def show
-    respond_with @task
-  end
-
   # POST /tasks
   # POST /tasks.json
   def create

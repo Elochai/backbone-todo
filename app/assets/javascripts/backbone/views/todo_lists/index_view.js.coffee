@@ -40,14 +40,14 @@ class BackboneTodo.Views.TodoLists.IndexView extends Backbone.View
     alertify.prompt("Name", 
       (e, str) =>
         if e
-          @model = new BackboneTodo.Models.TodoList({name: str})
+          @model = new BackboneTodo.Models.TodoList({name: str.trim()})
           @model.unset("errors")
           if @model.isValid() 
             @collection.create(@model,
               error: (todo_list, jqXHR) =>
                 @model.set({errors: $.parseJSON(jqXHR.responseText)})
             )
-            alertify.success("Todo list was successfully created!")
+            alertify.success("Todo list was successfully created!") 
       , "New todo list")
 
   render: =>

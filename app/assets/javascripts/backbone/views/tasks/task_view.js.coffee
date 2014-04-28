@@ -46,13 +46,15 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
     @$('.editing_deadline').removeClass('hidden')
     @$('.task_edit_input#datepicker').datepicker(
       todayBtn: "linked",
+      startDate: 'd',
+      endDate: '+10y',
       todayHighlight: true
     )
     @$('.task_edit_input#datepicker').focus()
     return false
 
   update: ->
-    @model.save({desc: @$('.task_edit_input').val(), validate: true},
+    @model.save({desc: @$('.task_edit_input').val().trim(), validate: true},
       success : (task) =>
         @render()
         @restore()
@@ -84,7 +86,7 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
 
   setDeadline: (e) -> 
     @stopAll(e)
-    @model.save(deadline: @$('.task_edit_input#datepicker').val())
+    @model.save(deadline: @$('.task_edit_input#datepicker').val().trim())
     @render()
     @restore()
     alertify.success("Deadline was successfully added!")

@@ -10,6 +10,7 @@
  *
  *= require font-awesome
  *= require datepicker
+ *= require bootstrap-datetimepicker.min
  *= require alertify.core
  *= require alertify.default
  *= require_self

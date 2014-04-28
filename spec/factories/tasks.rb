@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :task do
-    desc "MyString"
-    deadline "2014-04-09"
+    desc "task_desc"
+    deadline "today"
     completed false
     priority 1
   end

@@ -228,7 +228,8 @@ body {
   line-height: 20px;
   color: #000000;
   background-attachment: scroll;
-  background-color:#FFEBBA;
+  background-image: url(/assets/todo_bg.jpg);
+  background-size: 100% 100%;
 }
 
 a {
@@ -4620,28 +4621,28 @@ input[type="submit"].btn.btn-mini {
 }
 
 .bartext {
-  width: 200px;
+  width: 430px;
+  font-size:20px;
   padding-top: 7px;
   padding-left: 30px;
-  padding-right: 300px;
 }
 
 .delproject {
   position:absolute;
   top: 19px;
-  right: 30px;
+  right: 23px;
 }
 
 .editproject {
   position:absolute;
   top: 19px;
-  right: 55px;
+  right: 48px;
 }
 
 .separator {
   position:absolute;
   top: 16px;
-  right: 47px;
+  right: 40px;
   color: #B0B0B0;
 }
 

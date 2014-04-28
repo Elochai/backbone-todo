@@ -11,7 +11,7 @@ class BackboneTodo.Views.Tasks.NewView extends Backbone.View
     super(options)
 
   save_task: ->
-    taskDesc = @$('#input_task').val()
+    taskDesc = @$('#input_task').val().trim()
     @model = new BackboneTodo.Models.Task({desc: taskDesc, priority: @collection.nextPriority()})
     @model.unset("errors")
     if @model.isValid()

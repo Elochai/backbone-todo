@@ -33,7 +33,7 @@ class BackboneTodo.Views.TodoLists.TodoListView extends Backbone.View
 
   update: (e) ->
     if e.keyCode is 13
-      @model.save({name: @$('.todo_list_edit_input').val()},
+      @model.save({name: @$('.todo_list_edit_input').val().trim()},
         success : (todo_list) =>
           @reRender()
           @restore()

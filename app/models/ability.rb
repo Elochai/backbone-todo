@@ -32,7 +32,6 @@ class Ability
     if user
       can :manage, TodoList, user_id: user.id
       can :manage, Task
-      can :manage, User
     end
   end
 end

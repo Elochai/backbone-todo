@@ -50,6 +50,7 @@ group :test do
   gem 'faker', '~> 1.2.0'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'selenium-webdriver'
 end
 
 group :production do

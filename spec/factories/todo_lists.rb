@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :todo_list do
-    name "MyString"
+    name "todo_list_name"
   end
 end

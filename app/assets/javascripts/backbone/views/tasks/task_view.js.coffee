@@ -27,9 +27,13 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
 
   destroy: (e) ->
     @stopAll(e)
-    @model.destroy()
-    this.remove()
-    alertify.success("Task was successfully deleted!")
+    alertify.confirm('Are you sure you want to delete this task?',
+      (e, str) =>
+          if e
+            @model.destroy()
+            this.remove()
+            alertify.success("Task was successfully deleted!")
+    )
 
   edit: (e) ->
     @stopAll(e)
@@ -41,16 +45,19 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
 
   editDeadline: (e) ->
     @stopAll(e)
-    @$('td.visible').addClass('hidden')
-    @$('.editing_task').addClass('hidden')
-    @$('.editing_deadline').removeClass('hidden')
-    @$('.task_edit_input#datepicker').appendDtpicker(
-      "futureOnly": true,
-      "minuteInterval": 5,
-      "closeOnSelected": true
-    )
-    @$('.task_edit_input#datepicker').focus()
-    return false
+    if @model.get('completed') is false
+      @$('td.visible').addClass('hidden')
+      @$('.editing_task').addClass('hidden')
+      @$('.editing_deadline').removeClass('hidden')
+      @$('.task_edit_input#datepicker').appendDtpicker(
+        "futureOnly": true,
+        "minuteInterval": 5,
+        "closeOnSelected": true
+      )
+      @$('.task_edit_input#datepicker').focus()
+      return false
+    else
+      alertify.error("Can't change deadline in already completed task!")
 
   update: ->
     @model.save({desc: @$('.task_edit_input').val().trim(), validate: true},
@@ -86,10 +93,13 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
 
   setDeadline: (e) -> 
     @stopAll(e)
-    @model.save(deadline: @$('.task_edit_input#datepicker').val().trim())
-    @render()
-    @restore()
-    alertify.success("Deadline was successfully added!")
+    if @model.get('completed') is false
+      @model.save(deadline: @$('.task_edit_input#datepicker').val().trim())
+      @render()
+      @restore()
+      alertify.success("Deadline was successfully added!")
+    else
+      alertify.error("Can't change deadline in already completed task!")
 
   showManage: ->
     @$('#manage_buttons').removeClass('hidden')

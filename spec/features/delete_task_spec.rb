@@ -12,6 +12,7 @@ feature "Delete Task", :js => true do
     visit root_path
     page.execute_script('$("#task_desc").trigger("mouseover")')
     page.find('.icon-trash#delete_task').click
+    click_on('OK')
     expect(page).to have_content 'Task was successfully deleted!'
     expect(page).to_not have_content 'new task'
   end

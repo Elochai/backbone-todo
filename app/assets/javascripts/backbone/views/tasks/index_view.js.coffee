@@ -5,9 +5,9 @@ class BackboneTodo.Views.Tasks.IndexView extends Backbone.View
 
   initialize: (options) ->
     @collection = options.tasks
-    options.tasks.bind('reset', @addAll)
-    options.tasks.bind('add', @addOne)
-    options.tasks.bind('remove', @orderTasks)
+    @listenTo(@collection, 'reset', @addAll);
+    @listenTo(@collection, 'add', @addOne);
+    @listenTo(@collection, 'remove', @orderTasks);
 
   addAll: () =>
     @collection.each(@addOne)

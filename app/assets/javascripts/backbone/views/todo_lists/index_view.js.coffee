@@ -8,11 +8,11 @@ class BackboneTodo.Views.TodoLists.IndexView extends Backbone.View
 
   initialize: (options) ->
     @model = new @collection.model()
-    options.collection.bind('reset', @addAll, @renderHeader)
-    options.collection.bind('add', @addOne, @renderHeader)
-    options.collection.bind('add', @renderHeader)
-    options.collection.bind('remove', @renderHeader)
-    @model.on("change", @addOne)
+    @listenTo(options.collection, 'reset', @addAll);
+    @listenTo(options.collection, 'add', @addOne);
+    @listenTo(options.collection, 'add', @renderHeader);
+    @listenTo(options.collection, 'remove', @renderHeader);
+    @listenTo(@model, 'change', @addOne);
 
   addAll: () =>
     @collection.each(@addOne)

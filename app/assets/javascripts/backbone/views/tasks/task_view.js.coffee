@@ -16,8 +16,8 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
     "click #cancel_deadline" : "restoreFromDatepicker"
     "click #cancel_edit" : "restore"
     "click #check_completed" : "complete"
-    "click #up" : "up"
-    "click #down" : "down"
+    "click .up" : "up"
+    "click .down" : "down"
     "mouseenter td" : "showManage"
     "mouseleave td" : "hideManage"
 
@@ -44,11 +44,9 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
     @$('td.visible').addClass('hidden')
     @$('.editing_task').addClass('hidden')
     @$('.editing_deadline').removeClass('hidden')
-    @$('.task_edit_input#datepicker').datepicker(
-      todayBtn: "linked",
-      startDate: 'd',
-      endDate: '+10y',
-      todayHighlight: true
+    @$('.task_edit_input#datepicker').appendDtpicker(
+      "futureOnly": true,
+      "minuteInterval": 5
     )
     @$('.task_edit_input#datepicker').focus()
     return false

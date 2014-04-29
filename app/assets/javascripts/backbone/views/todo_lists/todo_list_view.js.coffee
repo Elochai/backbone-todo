@@ -21,6 +21,7 @@ class BackboneTodo.Views.TodoLists.TodoListView extends Backbone.View
         if e
           @model.destroy()
           this.remove()
+          this.stopListening()
           alertify.success("Todo list was successfully deleted!")
           return false
     )

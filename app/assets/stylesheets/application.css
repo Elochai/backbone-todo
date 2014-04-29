@@ -9,8 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require font-awesome
- *= require datepicker
- *= require bootstrap-datetimepicker.min
+ *= require jquery.simple-dtpicker
  *= require alertify.core
  *= require alertify.default
  *= require_self

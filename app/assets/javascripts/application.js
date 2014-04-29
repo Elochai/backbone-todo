@@ -18,8 +18,7 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/backbone_todo
-//= require bootstrap-datepicker
-//= require bootstrap-datetimepicker.min
+//= require jquery.simple-dtpicker
 //= require alertify
 //= require_tree .
 

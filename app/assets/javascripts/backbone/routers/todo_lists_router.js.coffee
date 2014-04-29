@@ -2,7 +2,6 @@ class BackboneTodo.Routers.TodoListsRouter extends Backbone.Router
   initialize: (options) ->
     @todoLists = new BackboneTodo.Collections.TodoListsCollection()
     @todoLists.reset options.todoLists
-    console.log(@todoLists)
     
   routes:
     "index"    : "index"

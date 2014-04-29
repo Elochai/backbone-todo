@@ -26,9 +26,9 @@
   |
   %i.icon-remove#cancel_deadline{title:'Cancel'}
 %td.centered.fixed3.visible#manage
-  #manage_buttons
-    %i.icon-arrow-up.up{title:'Increase priority, id:"up#{this.id}"'}
-    %i.icon-arrow-down.down{title:'Decrease priority', id:"down#{this.id}"}
+  .hidden#manage_buttons
+    %i.icon-arrow-up.up{title:'Increase priority'}
+    %i.icon-arrow-down.down{title:'Decrease priority'}
     %i.icon-pencil#edit_task{title:'Edit task'}
     %i.icon-exclamation-sign#choose_deadline{title:'Choose deadline'}
     %i.icon-trash#delete_task{href:'', title:'Delete task'}

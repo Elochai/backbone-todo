@@ -46,7 +46,8 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
     @$('.editing_deadline').removeClass('hidden')
     @$('.task_edit_input#datepicker').appendDtpicker(
       "futureOnly": true,
-      "minuteInterval": 5
+      "minuteInterval": 5,
+      "closeOnSelected": true
     )
     @$('.task_edit_input#datepicker').focus()
     return false
@@ -75,6 +76,7 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
   restoreFromDatepicker: (e) ->
     @$('td.visible').removeClass('hidden')
     @$('.editing_deadline').addClass('hidden')
+    @$('.task_edit_input#datepicker').handleDtpicker('hide')
     return false
 
   complete: (e) ->
@@ -117,7 +119,6 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
 
   render: ->
     $(@el).html(@template(@model.toJSON() ))
-    @$('#manage_buttons').addClass('hidden')
     @$('td.fixed1#task_desc').toggleClass('striked', @model.get('completed'))
     @$('#check_completed').attr('checked', @model.get('completed'))
     if @model.get('deadline')

@@ -11,7 +11,6 @@ class BackboneTodo.Models.Task extends Backbone.RelationalModel
       alertify.error error
 
   validate: (attrs) ->
-    console.log attrs
     "Task description should not be empty!" if attrs.desc is ''
 
 

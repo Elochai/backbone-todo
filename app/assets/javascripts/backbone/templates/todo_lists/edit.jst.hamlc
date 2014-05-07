@@ -1,0 +1,10 @@
+%center
+  .well.well-small
+    %h3.headertext 
+      Editing todo list "#{@name}"
+    .inputs
+      %label#new_name New name:
+      %input#input_edited_name{type: "text", value: @name, autofocus: true, :class => "form-control xlg"}
+    .buttons
+      %button#update_todo_list{:class => "btn btn-success"} Update todo list
+      %a{href: "#/index", :class => "btn btn-default"} Back

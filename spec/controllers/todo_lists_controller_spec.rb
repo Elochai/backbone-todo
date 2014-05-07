@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ability_spec_helper'
 
 describe TodoListsController do
   let(:valid_attributes) { {todo_list: { name: 'todo_list_name'}, :format => 'json'} }

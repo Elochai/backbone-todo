@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :todo_list do
-    name "todo_list_name"
+    name {Faker::Name.title}
+    user_id nil
   end
 end

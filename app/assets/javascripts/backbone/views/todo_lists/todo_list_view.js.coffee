@@ -8,10 +8,6 @@ class BackboneTodo.Views.TodoLists.TodoListView extends Backbone.View
 
   events:
     "click .delproject" : "destroy"
-    "dblclick .bartext": "edit"
-    "click .editproject": "edit"
-    "keypress .todo_list_edit_input": "update"
-    "blur .todo_list_edit_input": "restore"
     "mouseenter .navbar-blue.head" : "showManage"
     "mouseleave .navbar-blue.head" : "hideManage"
 
@@ -25,25 +21,6 @@ class BackboneTodo.Views.TodoLists.TodoListView extends Backbone.View
           alertify.success("Todo list was successfully deleted!")
           return false
     )
-
-  edit: ->
-    @$('.head').addClass('hidden')
-    @$('.editing').removeClass('hidden')
-    @$('.todo_list_edit_input').focus()
-    return false
-
-  update: (e) ->
-    if e.keyCode is 13
-      @model.save({name: @$('.todo_list_edit_input').val().trim()},
-        success : (todo_list) =>
-          @reRender()
-          @restore()
-          alertify.success("Todo list was successfully updated!")
-      )
-
-  restore: ->
-    @$('.head').removeClass('hidden')
-    @$('.editing').addClass('hidden')
 
   showManage: ->
     @$('#list_manage_buttons').removeClass('hidden')

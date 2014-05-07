@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui-1.10.4.custom
 //= require underscore
 //= require backbone
 //= require backbone-relational
@@ -21,4 +22,5 @@
 //= require jquery.simple-dtpicker
 //= require alertify
 //= require_tree .
+
 

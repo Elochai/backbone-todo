@@ -14,6 +14,11 @@ input.check {
   float: right;
 }
 
+input.edit_check {
+  position: relative;
+  bottom: 3px;
+}
+
 .hidden {
   display:none;
 }

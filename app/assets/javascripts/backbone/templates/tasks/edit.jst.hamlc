@@ -1,0 +1,15 @@
+%center
+  .well.well-small
+    %h3.headertext 
+      Editing task "#{@desc}"
+    .inputs
+      %label#new_desc New description:
+      %input#input_edited_desc{type: "text", value: @desc, autofocus: true, :class => "form-control xlg"}
+      %label#new_deadline New deadline:
+      %input#input_deadline{type: "text", value: @deadline, :class => "form-control xlg"}
+      %h4 
+        %input.edit_check#check_completed{type:'checkbox', title:'Set completed/uncompleted'}
+        Complete / uncomplete
+    .buttons
+      %button#update_task{:class => "btn btn-success"} Update task
+      %a{href: "#/index", :class => "btn btn-default"} Back

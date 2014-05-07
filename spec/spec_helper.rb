@@ -3,9 +3,10 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'capybara/rails'
-require 'ability_spec_helper'
+require 'capybara/rspec'
 include Devise::TestHelpers
+include Warden::Test::Helpers
+Capybara.javascript_driver = :webkit
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -31,16 +32,16 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-    DatabaseCleaner.strategy = :truncation
-  end
- 
-  config.before(:each) do
+  config.before :each do
+    if Capybara.current_driver == :rack_test
+      DatabaseCleaner.strategy = :transaction
+    else
+      DatabaseCleaner.strategy = :truncation
+    end
     DatabaseCleaner.start
   end
- 
-  config.after(:each) do
+
+  config.after do
     DatabaseCleaner.clean
   end
 

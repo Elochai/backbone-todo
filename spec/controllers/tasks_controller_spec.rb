@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ability_spec_helper'
 
 describe TasksController do
   let(:valid_attributes) { {task: { desc: 'task_desc', priority: 1 }, :format => 'json'} }

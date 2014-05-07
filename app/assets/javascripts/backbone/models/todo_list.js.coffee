@@ -20,7 +20,8 @@ class BackboneTodo.Models.TodoList extends Backbone.RelationalModel
       alertify.error error
 
   validate: (attrs) ->
-    "Todo list name should not be empty!"  if attrs.name is ''
+    "Todo list name should not be empty!" if attrs.name is ''
+
 
 class BackboneTodo.Collections.TodoListsCollection extends Backbone.Collection
   model: BackboneTodo.Models.TodoList

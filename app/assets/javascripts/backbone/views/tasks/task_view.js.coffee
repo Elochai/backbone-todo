@@ -7,19 +7,11 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
   
   events:
     "click #delete_task" : "destroy"
-    "click #edit_task" : "edit"
-    "dblclick #task_desc" : "edit"
-    "click #update_task" : "updateOnClick"
-    "click #choose_deadline" : "editDeadline"
-    "keypress .task_edit_input#edit_desc" : "updateOnEnter"
-    "click #set_deadline" : "setDeadline"
-    "click #cancel_deadline" : "restoreFromDatepicker"
-    "click #cancel_edit" : "restore"
     "click #check_completed" : "complete"
-    "click .up" : "up"
-    "click .down" : "down"
+    "click #edit_task" : "edit"
     "mouseenter td" : "showManage"
     "mouseleave td" : "hideManage"
+    "drop": "drop"
 
   stopAll: (e) ->
     e.preventDefault()
@@ -35,71 +27,15 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
             alertify.success("Task was successfully deleted!")
     )
 
-  edit: (e) ->
-    @stopAll(e)
-    @$('td.visible').addClass('hidden')
-    @$('.editing_task').removeClass('hidden')
-    @$('.editing_deadline').addClass('hidden')
-    @$('.task_edit_input#edit_desc').focus()
-    return false
-
-  editDeadline: (e) ->
-    @stopAll(e)
-    if @model.get('completed') is false
-      @$('td.visible').addClass('hidden')
-      @$('.editing_task').addClass('hidden')
-      @$('.editing_deadline').removeClass('hidden')
-      @$('.task_edit_input#datepicker').appendDtpicker(
-        "futureOnly": true,
-        "minuteInterval": 5,
-        "closeOnSelected": true
-      )
-      @$('.task_edit_input#datepicker').focus()
-      return false
-    else
-      alertify.error("Can't change deadline in already completed task!")
-
-  update: ->
-    @model.save({desc: @$('.task_edit_input').val().trim(), validate: true},
-      success : (task) =>
-        @render()
-        @restore()
-        alertify.success("Task was successfully updated!")
-    )
-
-  updateOnClick: (e) ->
-    @stopAll(e)
-    @update()
-
-  updateOnEnter: (e) ->
-    if e.keyCode is 13
-      @update()
-
-  restore: (e) ->
-    @$('td.visible').removeClass('hidden')
-    @$('.editing_task').addClass('hidden')
-    return false
-
-  restoreFromDatepicker: (e) ->
-    @$('td.visible').removeClass('hidden')
-    @$('.editing_deadline').addClass('hidden')
-    @$('.task_edit_input#datepicker').handleDtpicker('hide')
-    return false
-
   complete: (e) ->
     @stopAll(e)
     @model.save({completed: !@model.get('completed')})
     @render()
 
-  setDeadline: (e) -> 
-    @stopAll(e)
-    if @model.get('completed') is false
-      @model.save(deadline: @$('.task_edit_input#datepicker').val().trim())
-      @render()
-      @restore()
-      alertify.success("Deadline was successfully added!")
-    else
-      alertify.error("Can't change deadline in already completed task!")
+  edit: (e) ->
+    if @model.get('completed') is true
+      alertify.error("Can't update already completed task!")
+      return false
 
   showManage: ->
     @$('#manage_buttons').removeClass('hidden')
@@ -107,25 +43,12 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
   hideManage: ->
     @$('#manage_buttons').addClass('hidden')
 
-  up: (e) ->
-    @stopAll(e)
-    currentPriority = @model.get('priority')
-    if currentPriority <= @model.collection.length && currentPriority != 1
-      temp = @model.collection.where(priority: currentPriority - 1)[0]
-      temp.save(priority: currentPriority)
-      @model.save(priority: currentPriority - 1)
-      @model.collection.sort()
-      @model.get('todo_list_id').trigger('change')
-
-  down: (e) ->
-    @stopAll(e)
-    currentPriority = @model.get('priority')
-    if currentPriority < @model.collection.length 
-      temp = @model.collection.where(priority: currentPriority + 1)[0]
-      temp.save(priority: currentPriority)
-      @model.save(priority: currentPriority + 1)
-      @model.collection.sort()
-      @model.get('todo_list_id').trigger('change')
+  drop: (event, index) ->
+    @$el.trigger "update-sort", [
+      @model
+      index
+    ]
+    return
 
   render: ->
     $(@el).html(@template(@model.toJSON() ))
@@ -133,4 +56,5 @@ class BackboneTodo.Views.Tasks.TaskView extends Backbone.View
     @$('#check_completed').attr('checked', @model.get('completed'))
     if @model.get('deadline')
       @$('#task_desc').append("<small>(deadline: #{@model.get('deadline')})</small>")
+
     return this

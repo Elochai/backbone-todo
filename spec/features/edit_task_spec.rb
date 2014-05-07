@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'features_spec_helper'
+require 'features/features_spec_helper'
 
 feature "Edit Task", :js => true do
   let(:user) { FactoryGirl.create :user }
@@ -11,18 +11,18 @@ feature "Edit Task", :js => true do
     page.execute_script('$("#task_desc").trigger("mouseover")')
     page.find('.icon-pencil#edit_task').click
   end
-  scenario 'An user edits task successfully with valid data' do
-    within '.edit_task_form' do
-      page.find('.task_edit_input').set("Updated task")
+  scenario 'An user edits task description successfully with valid data' do
+    within '.inputs' do
+      page.find('#input_edited_desc').set("Updated task")
     end
-    page.find('.icon-ok').click
+    page.find('#update_task').click
     expect(page).to have_content 'Task was successfully updated!'
     expect(page).to have_content 'Updated task'
     expect(page).to_not have_content 'New task'
   end
-  scenario 'An user can not edit task with invalid data' do
-    within '.edit_task_form' do
-      page.find('.task_edit_input').set("")
+  scenario 'An user can not edit task description with invalid data' do
+    within '.inputs' do
+      page.find('#input_edited_desc').set("")
     end
     page.find('#update_task').click
     expect(page).to have_content 'Task description should not be empty!'

@@ -31,7 +31,7 @@ class Ability
 
     if user
       can :manage, TodoList, user_id: user.id
-      can :manage, Task
+      can :manage, Task, :todo_list => { :user_id => user.id }
     end
   end
 end

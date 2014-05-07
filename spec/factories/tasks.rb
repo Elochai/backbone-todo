@@ -2,9 +2,10 @@
 
 FactoryGirl.define do
   factory :task do
-    desc "task_desc"
-    deadline "today"
+    desc {Faker::Name.title}
+    deadline nil
     completed false
-    priority 1
+    priority {Faker::Number.digit}
+    todo_list_id nil
   end
 end

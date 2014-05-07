@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'features_spec_helper'
+require 'features/features_spec_helper'
 
 feature "Registration" do
   before do 

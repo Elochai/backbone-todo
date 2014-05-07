@@ -1,11 +1,11 @@
 require 'spec_helper'
-require 'features_spec_helper'
+require 'features/features_spec_helper'
 
 feature "Create Task", :js => true do
-  let(:user) { FactoryGirl.create :user }
+  given!(:user) { FactoryGirl.create :user }
+  given!(:todo_list) { FactoryGirl.create :todo_list, user_id: user.id }
   before(:each) do
     login_as(user)
-    user.todo_lists.create!(name: "New name")
     visit root_path
   end
   scenario 'An user creates new task successfully with valid data' do

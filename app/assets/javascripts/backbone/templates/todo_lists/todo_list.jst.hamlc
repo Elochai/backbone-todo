@@ -4,7 +4,7 @@
       .navbar-blue.head
         %h3.bartext{title:'Double click to edit todo list name'}= this.name
         #list_manage_buttons
-          %i.icon-pencil.icon-white.editproject{title:'Edit todo list name'}
+          %a.icon-pencil.icon-white.editproject{:href => "#/todo_lists/#{@id}/edit", title:'Edit todo list name'}
           %i.separator= "|"
           %i.icon-trash.icon-white.delproject{title:'Delete todo list'}
       .navbar-blue.editing.hidden

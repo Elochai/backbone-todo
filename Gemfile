@@ -47,10 +47,13 @@ end
  
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'faker', '~> 1.2.0'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'selenium-webdriver'
+  gem "capybara-webkit"
 end
 
 group :production do

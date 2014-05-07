@@ -10,6 +10,7 @@
  *
  *= require font-awesome
  *= require jquery.simple-dtpicker
+ *= require jquery-ui-1.10.4.custom
  *= require alertify.core
  *= require alertify.default
  *= require_self

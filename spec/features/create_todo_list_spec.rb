@@ -1,8 +1,8 @@
 require 'spec_helper'
-require 'features_spec_helper'
+require 'features/features_spec_helper'
 
 feature "Create TodoList", :js => true do
-  let(:user) { FactoryGirl.create :user }
+  given!(:user) { FactoryGirl.create :user }
   before(:each) do
     login_as(user)
     visit root_path

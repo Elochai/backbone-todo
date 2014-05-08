@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'features/features_spec_helper'
 
 feature "Drag and drop", :js => true, :driver => :selenium do
   given!(:user) { FactoryGirl.create :user }

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'features/features_spec_helper'
 
 feature "Session" do
   given!(:user) {FactoryGirl.create(:user)}

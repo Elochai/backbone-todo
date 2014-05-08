@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'features/features_spec_helper'
 
 feature "Set task deadline", :js => true do
   given!(:user) { FactoryGirl.create :user }

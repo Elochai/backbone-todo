@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'features/features_spec_helper'
 
 feature "Delete TodoList", :js => true do
   given!(:user) { FactoryGirl.create :user }

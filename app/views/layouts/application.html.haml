@@ -5,6 +5,9 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    %script(src="http://127.0.0.1:3000/path_embeds.js")
+    %script
+      window.onload = function () {window.pathEmbeds = new PathEmbeds({pathAccountSlug: 'test'});};
   %body
     .navbar.right
       .navbar-inner
@@ -15,9 +18,9 @@
           |
           = link_to raw("<i class='icon-off icon-white'></i> #{t(:sign_out)}"), destroy_user_session_path, :method => :delete
         - else
-          = link_to raw("<i class='icon-plus icon-white'></i> #{t(:sign_up)}"), new_user_registration_path 
+          = link_to raw("<i class='icon-plus icon-white'></i> #{t(:sign_up)}"), new_user_registration_path
           |
-          = link_to raw("<i class='icon-ok icon-white'></i> #{t(:sign_in)}"), new_user_session_path 
+          = link_to raw("<i class='icon-ok icon-white'></i> #{t(:sign_in)}"), new_user_session_path
     .container#dss
       .span7
         - if flash[:notice]
@@ -29,3 +32,5 @@
             %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
             %center= alert
     = yield
+    %center#path-iframe-container
+      %iframe{style: 'width:1050px;height:500px;'}
